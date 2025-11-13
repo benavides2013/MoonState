@@ -327,6 +327,29 @@ nav a:hover::after {
     border-color: #f4d88f;
 }
 
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  justify-items: center;
+}
+
+.juego-item {
+  background: #2b2061;
+  color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.juego-item:hover {
+  transform: scale(1.05);
+}
+
 /* REVIEW SECTION */
 .review-section {
     max-width: 600px;

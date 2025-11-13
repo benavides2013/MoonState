@@ -1,35 +1,38 @@
 // src/MoonState.jsx
-import { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Carousel from './components/Carousel';
-import GameList from './components/GameList';
-import ReviewForm from './components/ReviewForm';
-import ReviewList from './components/ReviewList';
-import { getJuegos, getReviews, createReview } from './api';
+import { useState, useEffect, useRef } from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Carousel from "./components/Carousel";
+import GameList from "./components/GameList";
+import ReviewForm from "./components/ReviewForm";
+import ReviewList from "./components/ReviewList";
+import { getJuegos, getReviews, createReview } from "./api";
+import "./moonstate.css";
 
 export default function MoonState() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [juegos, setJuegos] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
-  // Cargar datos del backend
+  // 🔹 Cargar juegos y reseñas al iniciar
   useEffect(() => {
     getJuegos().then(setJuegos).catch(console.error);
     getReviews().then(setReviews).catch(console.error);
   }, []);
 
-  // Manejar nueva reseña
+  // 🔹 Manejar nueva reseña
   const handleNewReview = async (review) => {
     const saved = await createReview(review);
-    if (saved) setReviews(prev => [...prev, saved]);
+    if (saved) setReviews((prev) => [...prev, saved]);
   };
 
-  // Items del carrusel
+  // 🔹 Items del carrusel
   const carouselItems = [
-    { icon: '🎮', title: 'Juego 1', description: 'Aventura épica en un mundo de fantasía' },
-    { icon: '🏆', title: 'Juego 2', description: 'Competencia intensa con gráficos impresionantes' },
-    { icon: '⚔️', title: 'Juego 3', description: 'Batalla estratégica donde cada decisión cuenta' },
+    { icon: "🎮", title: "Juego 1", description: "Aventura épica" },
+    { icon: "🏆", title: "Juego 2", description: "Competencia intensa" },
+    { icon: "⚔️", title: "Juego 3", description: "Batalla estratégica" },
   ];
 
   return (
@@ -39,10 +42,14 @@ export default function MoonState() {
 
       {/* CARRUSEL */}
       <section id="hero">
-        <Carousel items={carouselItems} />
+        <Carousel
+          items={carouselItems}
+          touchStartX={touchStartX}
+          touchEndX={touchEndX}
+        />
       </section>
 
-      {/* JUEGOS */}
+      {/* LISTA DE JUEGOS */}
       <section id="juegos">
         <h2>🎮 Lista de Juegos</h2>
         <GameList juegos={juegos} />
