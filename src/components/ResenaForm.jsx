@@ -1,8 +1,7 @@
-// src/components/ReviewForm.jsx
 import { useState } from 'react';
 
-export default function ReviewForm({ onSubmit }) {
-  const [formData, setFormData] = useState({ gameName: '', gameReview: '' });
+export default function ResenaForm({ onSubmit }) {
+  const [formData, setFormData] = useState({ gameNombre: '', gameResena: '' });
   const [selectedRating, setSelectedRating] = useState(0);
 
   const handleInputChange = (e) => {
@@ -11,9 +10,13 @@ export default function ReviewForm({ onSubmit }) {
   };
 
   const handleSubmit = () => {
-    if (formData.gameName && formData.gameReview && selectedRating > 0) {
-      onSubmit({ ...formData, rating: selectedRating });
-      setFormData({ gameName: '', gameReview: '' });
+    if (formData.gameNombre && formData.gameResena && selectedRating > 0) {
+      onSubmit({ 
+        juegoNombre: formData.gameNombre, 
+        texto: formData.gameResena, 
+        puntuacion: selectedRating 
+      });
+      setFormData({ gameNombre: '', gameResena: '' });
       setSelectedRating(0);
     } else {
       alert('Completa todos los campos y selecciona una puntuación');
@@ -24,21 +27,22 @@ export default function ReviewForm({ onSubmit }) {
     <div className="review-form-wrapper">
       <input
         type="text"
-        id="gameName"
+        id="gameNombre"
         placeholder="Nombre del Juego"
-        value={formData.gameName}
+        value={formData.gameNombre}
         onChange={handleInputChange}
       />
       <textarea
-        id="gameReview"
+        id="gameResena"
         placeholder="Escribe tu reseña..."
-        value={formData.gameReview}
+        value={formData.gameResena}
         onChange={handleInputChange}
       />
       <div className="rating-section">
         {[1,2,3,4,5].map(n => (
           <button
             key={n}
+            type="button"
             className={selectedRating === n ? 'selected' : ''}
             onClick={() => setSelectedRating(n)}
           >
@@ -46,7 +50,7 @@ export default function ReviewForm({ onSubmit }) {
           </button>
         ))}
       </div>
-      <button onClick={handleSubmit}>Enviar Reseña</button>
+      <button type="button" onClick={handleSubmit}>Enviar Reseña</button>
     </div>
   );
 }

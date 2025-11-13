@@ -19,9 +19,9 @@ export const getJuegos = async () => {
 // =======================
 // RESEÑAS
 // =======================
-export const getReviews = async () => {
+export const getResenas = async () => {
   try {
-    const res = await axios.get(`${BASE_URL}/reviews`);
+    const res = await axios.get(`${BASE_URL}/resenas`);
     return res.data;
   } catch (err) {
     console.error('Error al obtener reseñas:', err);
@@ -29,12 +29,23 @@ export const getReviews = async () => {
   }
 };
 
-export const createReview = async (review) => {
+export const createResena = async (resena) => {
   try {
-    const res = await axios.post(`${BASE_URL}/reviews`, review);
+    const res = await axios.post(`${BASE_URL}/resenas`, resena);
     return res.data;
   } catch (err) {
     console.error('Error al crear reseña:', err);
     return null;
+  }
+};
+
+// Obtener reseñas de un juego específico
+export const getResenasPorJuego = async (juegoId) => {
+  try {
+    const res = await axios.get(`${BASE_URL}/resenas/${juegoId}`);
+    return res.data;
+  } catch (err) {
+    console.error('Error al obtener reseñas del juego:', err);
+    return [];
   }
 };
