@@ -1,22 +1,17 @@
 import { useState } from 'react';
 
 export default function ResenaForm({ onSubmit }) {
-  const [formData, setFormData] = useState({ gameNombre: '', gameResena: '' });
+  const [formData, setFormData] = useState({ gameResena: '' });
   const [selectedRating, setSelectedRating] = useState(0);
 
   const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    setFormData(prev => ({ ...prev, [id]: value }));
+    setFormData({ gameResena: e.target.value });
   };
 
   const handleSubmit = () => {
-    if (formData.gameNombre && formData.gameResena && selectedRating > 0) {
-      onSubmit({ 
-        juegoNombre: formData.gameNombre, 
-        texto: formData.gameResena, 
-        puntuacion: selectedRating 
-      });
-      setFormData({ gameNombre: '', gameResena: '' });
+    if (formData.gameResena && selectedRating > 0) {
+      onSubmit({ texto: formData.gameResena, puntuacion: selectedRating });
+      setFormData({ gameResena: '' });
       setSelectedRating(0);
     } else {
       alert('Completa todos los campos y selecciona una puntuación');
@@ -25,15 +20,7 @@ export default function ResenaForm({ onSubmit }) {
 
   return (
     <div className="review-form-wrapper">
-      <input
-        type="text"
-        id="gameNombre"
-        placeholder="Nombre del Juego"
-        value={formData.gameNombre}
-        onChange={handleInputChange}
-      />
       <textarea
-        id="gameResena"
         placeholder="Escribe tu reseña..."
         value={formData.gameResena}
         onChange={handleInputChange}

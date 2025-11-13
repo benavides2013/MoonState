@@ -1,8 +1,7 @@
-// src/components/GameList.jsx
 import Juego from "./Juego";
 
-export default function GameList({ juegos }) {
-  if (!juegos.length) {
+export default function GameList({ juegos, onSelectJuego }) {
+  if (!juegos || !juegos.length) {
     return <p className="text-center text-gray-400">No hay juegos disponibles.</p>;
   }
 
@@ -14,6 +13,7 @@ export default function GameList({ juegos }) {
           nombre={juego.nombre}
           genero={juego.genero}
           icon="🎮"
+          onClick={() => onSelectJuego(juego)}
         />
       ))}
     </div>
