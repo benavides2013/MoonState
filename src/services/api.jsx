@@ -1,7 +1,11 @@
-import axios from 'axios';
-const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api';
+// api.jsx
 
-// Juegos
+import axios from 'axios';
+
+// Vite usa import.meta.env en lugar de process.env
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+
+// --------------------- Juegos ---------------------
 export const getJuegos = async () => {
   try {
     const res = await axios.get(`${BASE_URL}/juegos`);
@@ -12,8 +16,8 @@ export const getJuegos = async () => {
   }
 };
 
-// Reseñas
-export const getResenasPorJuego = async (juegoId) => {
+// -------------------- Reseñas ---------------------
+export const getResena = async (juegoId) => {
   try {
     const res = await axios.get(`${BASE_URL}/resenas/${juegoId}`);
     return res.data;
@@ -31,4 +35,11 @@ export const createResena = async (resena) => {
     console.error('Error al crear reseña:', err);
     return null;
   }
+};
+
+// Export por defecto (opcional)
+export default {
+  getJuegos,
+  getResena,
+  createResena
 };

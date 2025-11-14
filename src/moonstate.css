@@ -560,6 +560,121 @@ nav a:hover::after {
     font-size: 12px;
 }
 
+/* Contenedor principal de Home */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Contenedor de contenido con lista y detalle */
+.content-wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+/* Panel izquierdo: lista de juegos */
+.left-panel {
+  flex: 1;
+}
+
+/* Panel derecho: detalle del juego */
+.right-panel {
+  flex: 2;
+}
+
+/* Títulos */
+.title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* GameList */
+.game-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.juego-card {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.juego-card:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.02);
+}
+
+/* GameDetail */
+.game-detail {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Reseñas */
+.resena-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resena-item {
+  border-top: 1px solid #eee;
+  padding-top: 5px;
+}
+
+/* Formulario de reseña */
+.review-form-wrapper {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+textarea {
+  width: 100%;
+  padding: 5px;
+  resize: vertical;
+  min-height: 60px;
+}
+
+.rating-section {
+  display: flex;
+  gap: 5px;
+  margin: 5px 0;
+}
+
+.rating-section button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 1rem;
+}
+
+.rating-section button.selected {
+  color: gold;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #999;
+  background-color: #fff;
+}
+
+button:hover {
+  background-color: #eee;
+}
+
 /* FOOTER */
 footer {
     background: rgba(13, 6, 32, 0.9);
