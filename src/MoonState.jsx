@@ -32,7 +32,7 @@ export default function MoonState() {
 
   const carouselItems = [
     { icon: "⚔️", title: "Valorant", description: "Es un shooter en primera persona ambientado en un futuro cercano. Los jugadores toman el control de personajes que representan diversas culturas y nacionalidades de todo el mundo."},
-    { icon: "🏆", title: "Five night's at Freddy", description: "Competencia intensa" },
+    { icon: "🏆", title: "Five night's at Freddy", description: "Un juego inolvidadable en nuestra infancia" },
     { icon: "🍭", title: "Candy Crush", description: "Batalla estratégica" },
   ];
 
