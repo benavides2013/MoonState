@@ -22,7 +22,7 @@ body {
 header {
     position: relative;
     padding: 20px 0;
-    background: rgba(65, 40, 132, 0.8);
+    background: rgba(29, 16, 66, 0.8);
     backdrop-filter: blur(10px);
 }
 
