@@ -1,6 +1,7 @@
 // src/components/ResenaForm.jsx - VERSIÓN CORREGIDA
 
 import { useState } from 'react';
+import '../styles/ResenaForm.css';
 
 export default function ResenaForm({ onSubmit, juegos = [] }) {
   const [formData, setFormData] = useState({

@@ -1,0 +1,299 @@
+/* src/styles/ResenaForm.css */
+
+.review-form-wrapper {
+    background: linear-gradient(135deg, rgba(120, 100, 150, 0.4) 0%, rgba(90, 70, 120, 0.4) 100%);
+    border: 3px solid rgba(200, 180, 220, 0.3);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #f4d88f;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(70, 50, 100, 0.6);
+    border: 2px solid rgba(200, 180, 220, 0.4);
+    border-radius: 50px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: 'Arial', sans-serif;
+}
+
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-input:focus {
+    background: rgba(70, 50, 100, 0.8);
+    border-color: rgba(244, 216, 143, 0.6);
+    box-shadow: 0 0 20px rgba(244, 216, 143, 0.3);
+}
+
+.form-input:disabled {
+    background: rgba(70, 50, 100, 0.3);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(70, 50, 100, 0.6);
+    border: 2px solid rgba(200, 180, 220, 0.4);
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    min-height: 140px;
+    resize: vertical;
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-textarea:focus {
+    background: rgba(70, 50, 100, 0.8);
+    border-color: rgba(244, 216, 143, 0.6);
+    box-shadow: 0 0 20px rgba(244, 216, 143, 0.3);
+}
+
+.form-group small {
+    display: block;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85em;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.form-hint {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9em;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Rating Section */
+.rating-section {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.emoji-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    background: rgba(244, 216, 143, 0.7);
+    border: 3px solid rgba(156, 89, 89, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 5px 20px rgba(0, 0, 0, 0.3),
+        inset 0 2px 5px rgba(255, 255, 255, 0.3);
+    position: relative;
+    font-weight: bold;
+}
+
+.emoji-btn:hover {
+    transform: scale(1.15) translateY(-5px);
+    background: rgba(255, 215, 0, 0.9);
+    box-shadow: 
+        0 10px 30px rgba(255, 215, 0, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.4);
+}
+
+.emoji-btn.selected {
+    background: linear-gradient(135deg, #ffd700 0%, #f4d88f 100%);
+    transform: scale(1.2);
+    border-color: #ffd700;
+    box-shadow: 
+        0 10px 35px rgba(255, 215, 0, 0.6),
+        inset 0 2px 5px rgba(255, 255, 255, 0.4),
+        0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+.emoji-btn:active {
+    transform: scale(1.05);
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(180, 160, 200, 0.8) 0%, rgba(140, 120, 160, 0.8) 100%);
+    border: 3px solid rgba(200, 180, 220, 0.5);
+    border-radius: 50px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        inset 0 2px 5px rgba(255, 255, 255, 0.2);
+    font-family: 'Arial', sans-serif;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, rgba(200, 180, 220, 1) 0%, rgba(160, 140, 180, 1) 100%);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 35px rgba(107, 78, 137, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.3);
+}
+
+.submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Mensajes de estado */
+.form-message {
+    padding: 12px 16px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.9em;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-message.error {
+    background: rgba(255, 100, 100, 0.2);
+    border: 2px solid #ff6464;
+    color: #ff6464;
+}
+
+.form-message.success {
+    background: rgba(100, 255, 100, 0.2);
+    border: 2px solid #64ff64;
+    color: #64ff64;
+}
+
+/* Reseñas List */
+.resena-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resena-item {
+    background: linear-gradient(135deg, rgba(120, 100, 150, 0.3) 0%, rgba(90, 70, 120, 0.3) 100%);
+    border: 2px solid rgba(244, 216, 143, 0.3);
+    border-radius: 15px;
+    padding: 18px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.resena-item:hover {
+    border-color: rgba(244, 216, 143, 0.6);
+    box-shadow: 0 5px 20px rgba(244, 216, 143, 0.2);
+}
+
+.resena-item h4 {
+    color: #f4d88f;
+    font-size: 0.95em;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.resena-item p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+.resena-item small {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8em;
+}
+
+@media (max-width: 768px) {
+    .review-form-wrapper {
+        padding: 25px;
+        border-radius: 15px;
+    }
+
+    .emoji-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    .form-input,
+    .form-textarea {
+        font-size: 15px;
+    }
+
+    .submit-btn {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .rating-section {
+        gap: 8px;
+    }
+
+    .resena-list {
+        margin-top: 20px;
+    }
+
+    .resena-item {
+        padding: 15px;
+    }
+}

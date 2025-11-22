@@ -1,4 +1,4 @@
-// src/services/api.jsx - VERSIÓN CORREGIDA
+// src/services/api.jsx - VERSIÓN COMPLETA CORREGIDA
 
 import axios from 'axios';
 
@@ -14,6 +14,7 @@ const apiClient = axios.create({
 });
 
 // --------------------- JUEGOS ---------------------
+
 export const getJuegos = async () => {
   try {
     const res = await apiClient.get('/juegos');
@@ -21,6 +22,62 @@ export const getJuegos = async () => {
   } catch (err) {
     console.error('Error al obtener juegos:', err.message);
     return [];
+  }
+};
+
+// Obtener un juego por ID
+export const getJuegoById = async (id) => {
+  try {
+    if (!id) {
+      console.warn('ID no proporcionado');
+      return null;
+    }
+    const res = await apiClient.get(`/juegos/${id}`);
+    return res.data || null;
+  } catch (err) {
+    console.error(`Error al obtener juego ${id}:`, err.message);
+    return null;
+  }
+};
+
+// Guardar/Crear o Actualizar un juego
+export const saveJuego = async (juego) => {
+  try {
+    if (!juego || !juego.nombre) {
+      console.warn('Datos de juego incompletos:', juego);
+      return null;
+    }
+
+    // Si tiene _id, es una actualización
+    if (juego._id) {
+      const res = await apiClient.put(`/juegos/${juego._id}`, juego);
+      console.log('Juego actualizado:', res.data);
+      return res.data || null;
+    } else {
+      // Si no tiene _id, es una creación
+      const res = await apiClient.post('/juegos', juego);
+      console.log('Juego creado:', res.data);
+      return res.data || null;
+    }
+  } catch (err) {
+    console.error('Error al guardar juego:', err.response?.data || err.message);
+    return null;
+  }
+};
+
+// Eliminar un juego
+export const deleteJuego = async (id) => {
+  try {
+    if (!id) {
+      console.warn('ID no proporcionado');
+      return false;
+    }
+    await apiClient.delete(`/juegos/${id}`);
+    console.log(`Juego ${id} eliminado`);
+    return true;
+  } catch (err) {
+    console.error(`Error al eliminar juego ${id}:`, err.message);
+    return false;
   }
 };
 
@@ -111,6 +168,9 @@ export const deleteResena = async (resenaId) => {
 // Export por defecto
 export default {
   getJuegos,
+  getJuegoById,
+  saveJuego,
+  deleteJuego,
   getResena,
   getResenasPorJuego,
   createResena,

@@ -1,0 +1,171 @@
+/* src/styles/FormularioJuego.css */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, rgba(120, 100, 150, 0.95) 0%, rgba(90, 70, 120, 0.95) 100%);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 3px rgba(244, 216, 143, 0.3);
+    border: 2px solid rgba(244, 216, 143, 0.3);
+}
+
+.modal-content h2 {
+    color: #f4d88f;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    padding: 12px 15px;
+    border: 2px solid rgba(200, 180, 220, 0.3);
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: inherit;
+    background: rgba(70, 50, 100, 0.4);
+    color: white;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.modal-content input::placeholder,
+.modal-content select::placeholder,
+.modal-content textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.modal-content input:focus,
+.modal-content select:focus,
+.modal-content textarea:focus {
+    background: rgba(70, 50, 100, 0.7);
+    border-color: rgba(244, 216, 143, 0.6);
+    box-shadow: 0 0 15px rgba(244, 216, 143, 0.2);
+}
+
+.modal-content select {
+    cursor: pointer;
+    color: white;
+}
+
+.modal-content select option {
+    background: #2c1a67;
+    color: white;
+}
+
+.modal-content textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: 'Arial', sans-serif;
+}
+
+.modal-content label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #f4d88f;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-content label:hover {
+    color: #ffd700;
+}
+
+.modal-content input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #f4d88f;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.form-buttons button {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-buttons button[type="submit"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.form-buttons button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+.form-buttons button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.form-buttons button[type="button"] {
+    background: rgba(200, 180, 220, 0.3);
+    color: #f4d88f;
+    border: 2px solid rgba(244, 216, 143, 0.4);
+}
+
+.form-buttons button[type="button"]:hover {
+    background: rgba(244, 216, 143, 0.2);
+    border-color: rgba(244, 216, 143, 0.6);
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 90%;
+        padding: 25px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.2em;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .form-buttons button {
+        padding: 15px;
+    }
+}
