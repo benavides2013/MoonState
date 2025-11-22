@@ -689,6 +689,52 @@ button:hover {
   background-color: #eee;
 }
 
+.estadisticas {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  margin: 40px 0;
+}
+
+.estadisticas h2 {
+  color: white;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 1.8em;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card h3 {
+  color: #667eea;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.stat-number {
+  color: #333;
+  font-size: 1.8em;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.stat-porcent {
+  color: #667eea;
+  font-size: 0.9em;
+}
+
 /* FOOTER */
 footer {
     background: rgba(13, 6, 32, 0.9);
