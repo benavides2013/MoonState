@@ -1,4 +1,3 @@
-// src/MoonState.jsx
 import { useState, useEffect, useRef } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -6,26 +5,28 @@ import Carousel from "./components/Carousel";
 import GameList from "./components/GameList";
 import ResenaForm from "./components/ResenaForm";
 import ResenaList from "./components/ResenaList";
-import { getJuegos, getResena, createResena } from "./services/api";
+import FormularioJuego from "./components/FormularioJuego";
+import EstadisticasPersonales from "./components/EstadisticasPersonales";
+import { getJuegos, getResena, createResena, deleteJuego, updateResena, deleteResena } from "./services/api";
 import "./moonstate.css";
 
 export default function MoonState() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [juegos, setJuegos] = useState([]);
   const [resenas, setResenas] = useState([]);
+  const [showFormJuego, setShowFormJuego] = useState(false);
+  const [juegoEditando, setJuegoEditando] = useState(null);
   const [loadingJuegos, setLoadingJuegos] = useState(true);
   const [loadingResenas, setLoadingResenas] = useState(true);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  // Cargar juegos y reseñas al iniciar
   useEffect(() => {
     cargarDatos();
   }, []);
 
   const cargarDatos = async () => {
     try {
-      // Cargar juegos
       setLoadingJuegos(true);
       const juegosCargados = await getJuegos();
       setJuegos(juegosCargados || []);
@@ -38,7 +39,6 @@ export default function MoonState() {
     }
 
     try {
-      // Cargar reseñas
       setLoadingResenas(true);
       const resenasCargadas = await getResena();
       setResenas(resenasCargadas || []);
@@ -51,26 +51,43 @@ export default function MoonState() {
     }
   };
 
-  // Manejar nueva reseña
   const handleNewResena = async (resena) => {
     try {
-      console.log("📤 Enviando nueva reseña:", resena);
-      
       const saved = await createResena(resena);
-      
       if (saved) {
-        console.log("✅ Reseña guardada:", saved);
-        // Agregar la nueva reseña al estado
         setResenas((prev) => [...prev, saved]);
-      } else {
-        console.warn("⚠️ La reseña no fue guardada");
       }
     } catch (err) {
       console.error("❌ Error al crear reseña:", err);
     }
   };
 
-  // Items del carrusel
+  const handleSaveJuego = (juego) => {
+    if (juegoEditando) {
+      setJuegos(juegos.map(j => j._id === juego._id ? juego : j));
+    } else {
+      setJuegos([...juegos, juego]);
+    }
+    setShowFormJuego(false);
+    setJuegoEditando(null);
+  };
+
+  const handleDeleteJuego = async (id) => {
+    if (window.confirm('¿Eliminar juego?')) {
+      if (await deleteJuego(id)) {
+        setJuegos(juegos.filter(j => j._id !== id));
+      }
+    }
+  };
+
+  const handleUpdateResena = (resena) => {
+    setResenas(resenas.map(r => r._id === resena._id ? resena : r));
+  };
+
+  const handleDeleteResena = (id) => {
+    setResenas(resenas.filter(r => r._id !== id));
+  };
+
   const carouselItems = [
     {
       icon: "⚔️",
@@ -93,7 +110,6 @@ export default function MoonState() {
     <div className="moonstate-container">
       <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
-      {/* SECCIÓN HERO - CARRUSEL */}
       <section id="hero">
         <Carousel
           items={carouselItems}
@@ -102,38 +118,52 @@ export default function MoonState() {
         />
       </section>
 
-      {/* SECCIÓN JUEGOS */}
       <section id="juegos">
-        <h2>🎮 Lista de Juegos</h2>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 20px' }}>
+          <h2>🎮 Mi Biblioteca</h2>
+          <button onClick={() => { setShowFormJuego(true); setJuegoEditando(null); }} 
+            style={{ padding: '10px 20px', background: '#667eea', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '1em', fontWeight: 'bold' }}>
+            ➕ Agregar Juego
+          </button>
+        </div>
         {loadingJuegos ? (
           <p className="loading">⏳ Cargando juegos...</p>
         ) : juegos.length > 0 ? (
-          <GameList juegos={juegos} />
+          <GameList 
+            juegos={juegos} 
+            onDeleteJuego={handleDeleteJuego}
+            onEditJuego={(j) => { setJuegoEditando(j); setShowFormJuego(true); }} 
+          />
         ) : (
-          <p className="no-data">No hay juegos disponibles en este momento.</p>
+          <p className="no-data">No hay juegos disponibles.</p>
         )}
       </section>
 
-      {/* SECCIÓN RESEÑAS */}
-      <section id="reseñas">
-        <h2>📝 Reseñas de Juegos</h2>
+      <EstadisticasPersonales juegos={juegos} resenas={resenas} />
 
-        {/* Formulario para crear reseña */}
+      <section id="reseñas">
+        <h2>📝 Reseñas</h2>
         {juegos.length > 0 ? (
           <ResenaForm onSubmit={handleNewResena} juegos={juegos} />
         ) : (
-          <p className="info-message">⏳ Esperando juegos para crear reseñas...</p>
+          <p className="info-message">⏳ Esperando juegos...</p>
         )}
-
-        {/* Lista de reseñas */}
         {loadingResenas ? (
           <p className="loading">⏳ Cargando reseñas...</p>
         ) : resenas.length > 0 ? (
-          <ResenaList resenas={resenas} />
+          <ResenaList resenas={resenas} onUpdate={handleUpdateResena} onDelete={handleDeleteResena} />
         ) : (
-          <p className="no-data">No hay reseñas todavía. ¡Sé el primero en dejar una!</p>
+          <p className="no-data">No hay reseñas todavía.</p>
         )}
       </section>
+
+      {showFormJuego && (
+        <FormularioJuego
+          juegoId={juegoEditando?._id}
+          onSave={handleSaveJuego}
+          onCancel={() => { setShowFormJuego(false); setJuegoEditando(null); }}
+        />
+      )}
 
       <Footer />
     </div>
