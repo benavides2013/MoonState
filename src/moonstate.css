@@ -8,7 +8,7 @@
 
 body {
     font-family: "Press Start 2P", system-ui;
-    background: linear-gradient(180deg, #2d1b69 0%, #1a0f3d 50%, #0d0620 100%);
+    background: linear-gradient(180deg, #5f0b9c 0%, #2c1a67 50%, #110a27 100%);
     min-height: 100vh;
     color: white;
     overflow-x: hidden;
@@ -22,7 +22,7 @@ body {
 header {
     position: relative;
     padding: 20px 0;
-    background: rgba(29, 16, 66, 0.8);
+    background: rgba(101, 30, 116, 0.8);
     backdrop-filter: blur(10px);
 }
 
@@ -65,12 +65,12 @@ header {
 }
 
 .moon {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #89791d 0%, #b7ad52 50%, #3a3206 100%);
     border-radius: 50%;
     position: relative;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 20px rgba(184, 182, 44, 0.6);
     animation: pulse 2s ease-in-out infinite;
 }
 
@@ -85,7 +85,7 @@ nav {
 }
 
 nav a {
-    color: white;
+    color: rgb(237, 237, 125);
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
@@ -94,7 +94,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffd700;
+    color: #efdfee;
     transform: translateY(-2px);
 }
 
@@ -105,7 +105,7 @@ nav a::after {
     left: 0;
     width: 0;
     height: 2px;
-    background: #ffd700;
+    background: #dac54f;
     transition: width 0.3s;
 }
 
@@ -133,7 +133,7 @@ nav a:hover::after {
 
 .star {
     position: absolute;
-    background: white;
+    background: rgb(231, 217, 217);
     border-radius: 50%;
     animation: twinkle 3s ease-in-out infinite;
 }
@@ -151,7 +151,7 @@ nav a:hover::after {
     left: -300px;
     width: 300px;
     height: 100vh;
-    background: rgba(29, 16, 66, 0.98);
+    background: rgba(99, 78, 158, 0.98);
     backdrop-filter: blur(10px);
     padding: 80px 30px 30px;
     transition: left 0.3s;
@@ -173,7 +173,7 @@ nav a:hover::after {
 }
 
 .mobile-menu a:hover {
-    color: #ffd700;
+    color: #ada787;
 }
 
 .overlay {
@@ -209,7 +209,7 @@ nav a:hover::after {
 
 .carousel-wrapper {
     flex: 1;
-    max-width: 800px;
+    max-width: 900px;
     overflow: hidden;
     border-radius: 20px;
 }
@@ -225,7 +225,7 @@ nav a:hover::after {
     border-radius: 20px;
     padding: 80px 60px;
     box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 20px 60px rgba(121, 71, 71, 0.5),
         0 0 0 5px rgba(0, 0, 0, 0.3),
         inset 0 -5px 20px rgba(0, 0, 0, 0.15);
     text-align: center;
@@ -249,8 +249,8 @@ nav a:hover::after {
 }
 
 .carousel-item h3 {
-    font-size: 36px;
-    color: #2d1b69;
+    font-size: 30px;
+    color: #c35ccf;
     margin-bottom: 20px;
     font-weight: bold;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -259,16 +259,16 @@ nav a:hover::after {
 }
 
 .carousel-item p {
-    font-size: 18px;
-    color: #4a3a70;
-    line-height: 1.8;
+    font-size: 20px;
+    color: #28125b;
+    line-height: 1.1;
     position: relative;
     z-index: 1;
 }
 
 .carousel-btn {
     background: linear-gradient(135deg, #f4d88f 0%, #e8c770 100%);
-    border: 4px solid rgba(0, 0, 0, 0.4);
+    border: 9px solid rgba(0, 0, 0, 0.4);
     width: 70px;
     height: 70px;
     border-radius: 15px;
@@ -306,34 +306,36 @@ nav a:hover::after {
 .carousel-dots {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 9px;
     margin-top: 40px;
 }
 
 .dot {
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.5s ease;
+    border: 8px solid rgba(255, 255, 255, 0.5);
 }
 
 .dot.active {
-    background: #f4d88f;
-    transform: scale(1.4);
+    background: #8a6a18;
+    transform: scale(1.2);
     box-shadow: 0 0 15px rgba(244, 216, 143, 0.8);
-    border-color: #f4d88f;
+    border-color: #978045;
 }
 
 .game-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  gap: 8rem;
+  padding: 4rem;
   justify-items: center;
 }
+
+.jue
 
 .juego-item {
   background: #2b2061;
@@ -405,15 +407,15 @@ nav a:hover::after {
 
 .form-textarea {
     width: 100%;
-    padding: 20px 25px;
+    padding: 16px 16px;
     background: rgba(70, 50, 100, 0.6);
     border: 2px solid rgba(200, 180, 220, 0.4);
     border-radius: 25px;
     color: white;
     font-size: 16px;
-    min-height: 150px;
+    min-height: 140px;
     resize: vertical;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Broadway', sans-serif;
     transition: all 0.3s ease;
     outline: none;
 }
@@ -444,7 +446,7 @@ nav a:hover::after {
     height: 60px;
     font-size: 32px;
     background: rgba(244, 216, 143, 0.8);
-    border: 3px solid rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(156, 89, 89, 0.3);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -501,7 +503,7 @@ nav a:hover::after {
     background: linear-gradient(135deg, rgba(200, 180, 220, 1) 0%, rgba(160, 140, 180, 1) 100%);
     transform: translateY(-2px);
     box-shadow: 
-        0 12px 35px rgba(200, 180, 220, 0.5),
+        0 12px 35px rgba(107, 78, 137, 0.5),
         inset 0 2px 5px rgba(255, 255, 255, 0.3);
 }
 
@@ -577,12 +579,12 @@ nav a:hover::after {
 
 /* Panel izquierdo: lista de juegos */
 .left-panel {
-  flex: 1;
+  flex: 10;
 }
 
 /* Panel derecho: detalle del juego */
 .right-panel {
-  flex: 2;
+  flex: 25;
 }
 
 /* Títulos */
@@ -593,22 +595,34 @@ nav a:hover::after {
 
 /* GameList */
 .game-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: flex-box;
+  flex-direction: column-wrap;
+  gap: 15px;
 }
 
 .juego-card {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  padding: 15px;
+  border: 5px solid #57116e;
+  border-radius: 50px;
+  background: #1e0c24e0;
+  box-shadow: 0 2px 8px rgba(148, 26, 148, 0.67);
+  transition: transform 0.5s;
 }
 
 .juego-card:hover {
-  background-color: #f0f0f0;
-  transform: scale(1.02);
+  transform: translateY(-18px);
+  box-shadow: 0 5px 15px rgba(243, 236, 239, 0.605);
+}
+
+.juego-card p {
+  margin: 8px 0;
+  color: #eff3f64c;
+  font-size: 0.95em;
+}
+
+.juego-card h3 {
+  color: #952451;
+  margin-bottom: 10px;
 }
 
 /* GameDetail */

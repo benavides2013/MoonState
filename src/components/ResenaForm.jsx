@@ -92,7 +92,7 @@ export default function ResenaForm({ onSubmit, juegos = [] }) {
 
         {/* Selección del juego */}
         <div className="form-group">
-          <label htmlFor="juego">🎮 Selecciona un juego:</label>
+          <label htmlFor="juego">🎮 Selecciona el juego:</label>
           <select
             id="juego"
             name="juego"
@@ -101,7 +101,7 @@ export default function ResenaForm({ onSubmit, juegos = [] }) {
             className="form-input"
             disabled={juegos.length === 0}
           >
-            <option value="">-- Selecciona un juego --</option>
+            <option value="">-- Selecciona un juego ⚔️--</option>
             {juegos.map(j => (
               <option key={j._id} value={j._id}>
                 {j.nombre || "Juego sin nombre"}
@@ -113,7 +113,7 @@ export default function ResenaForm({ onSubmit, juegos = [] }) {
 
         {/* Nombre del autor (opcional) */}
         <div className="form-group">
-          <label htmlFor="autor">👤 Tu nombre (opcional):</label>
+          <label htmlFor="autor">👤 Nombre (opcional):</label>
           <input
             id="autor"
             type="text"
@@ -128,11 +128,11 @@ export default function ResenaForm({ onSubmit, juegos = [] }) {
 
         {/* Texto de la reseña */}
         <div className="form-group">
-          <label htmlFor="texto">📝 Tu reseña:</label>
+          <label htmlFor="texto">📝 Reseña:</label>
           <textarea
             id="texto"
             name="texto"
-            placeholder="Cuéntanos qué te pareció este juego..."
+            placeholder="¡Moontracker quiere saber que te pareció este juego! 🌙"
             value={formData.texto}
             onChange={handleChange}
             className="form-textarea"

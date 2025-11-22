@@ -1,8 +1,8 @@
 import Juego from "./Juego";
 
-export default function GameList({ juegos, onSelectJuego }) {
-  if (!juegos || !juegos.length) {
-    return <p className="text-center text-gray-400">No hay juegos disponibles.</p>;
+export default function GameList({ juegos, onDeleteJuego, onEditJuego }) {
+  if (!juegos?.length) {
+    return <p style={{ textAlign: 'center', padding: '20px', color: '#999' }}>No hay juegos</p>;
   }
 
   return (
@@ -10,10 +10,9 @@ export default function GameList({ juegos, onSelectJuego }) {
       {juegos.map((juego) => (
         <Juego
           key={juego._id}
-          nombre={juego.nombre}
-          genero={juego.genero}
-          icon="🎮"
-          onClick={() => onSelectJuego(juego)}
+          juego={juego}
+          onDelete={() => onDeleteJuego(juego._id)}
+          onEdit={() => onEditJuego(juego)}
         />
       ))}
     </div>
